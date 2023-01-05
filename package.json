@@ -18,10 +18,18 @@
   "homepage": "https://github.com/RebeccaBeitel/udemy_chat_app#readme",
   "dependencies": {
     "body-parser": "^1.20.1",
+    "connect-flash": "^0.1.1",
+    "connect-mongo": "^4.6.0",
+    "cookie-parser": "^1.4.6",
     "dependable": "^1.1.0",
     "ejs": "^3.1.8",
     "express": "^4.18.2",
     "express-promise-router": "^4.1.1",
-    "lodash": "^4.17.21"
+    "express-session": "^1.17.3",
+    "express-validator": "^6.14.2",
+    "lodash": "^4.17.21",
+    "mongoose": "^6.8.2",
+    "passport": "^0.6.0",
+    "passport-local": "^1.0.0"
   }
 }

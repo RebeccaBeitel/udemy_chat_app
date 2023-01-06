@@ -14,7 +14,7 @@ const container = require("./container");
 
 const url = "mongodb://localhost/udemy_chat_app";
 
-container.resolve(function (users) {
+container.resolve(function (users, _) {
   mongoose.Promise = global.Promise;
   mongoose.connect(url, { useNewUrlParser: true });
   const app = SetupExpress();
@@ -52,5 +52,7 @@ container.resolve(function (users) {
     app.use(flash());
     app.use(passport.initialize());
     app.use(passport.session());
+
+    app.locals._ = _;
   }
 });

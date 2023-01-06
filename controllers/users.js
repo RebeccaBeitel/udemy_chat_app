@@ -9,7 +9,27 @@ module.exports = function (_, passport, user, validator) {
       router.get("/signup", this.getSignUp);
       router.get("/home", this.homePage);
 
-      // router.post("/signup", user.SignUpValidation, this.postSignUp);
+      router.post(
+        "/",
+        [
+          validator
+            .check("email")
+            .not()
+            .isEmpty()
+            .isEmail()
+            .withMessage("Email is not valid"),
+          validator
+            .check("password")
+            .not()
+            .isEmpty()
+            .isLength({ min: 5 })
+            .withMessage(
+              "Password is required and must be at least 5 characters"
+            ),
+        ],
+        this.postValidation,
+        this.postLogin
+      );
       router.post(
         "/signup",
         [
@@ -42,8 +62,19 @@ module.exports = function (_, passport, user, validator) {
     },
 
     indexPage: function (req, res) {
-      return res.render("index");
+      const errors = req.flash("error");
+      return res.render("index", {
+        title: "Udemy Chat App",
+        messages: errors,
+        hasErrors: errors.length > 0,
+      });
     },
+
+    postLogin: passport.authenticate("local.login", {
+      successRedirect: "/home",
+      failureRedirect: "/signup",
+      failureFlash: true,
+    }),
 
     getSignUp: function (req, res) {
       const errors = req.flash("error");

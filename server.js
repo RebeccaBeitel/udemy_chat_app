@@ -4,19 +4,19 @@ const ejs = require("ejs");
 const http = require("http");
 const cookieParser = require("cookie-parser");
 const validator = require("express-validator");
-const session = require("express-session");
-const MongoStore = require("connect-mongo")(session);
 const mongoose = require("mongoose");
-const flash = require("flash");
+const session = require("express-session");
+const MongoStore = require("connect-mongo");
+const flash = require("connect-flash");
 const passport = require("passport");
 
 const container = require("./container");
 
+const url = "mongodb://localhost/udemy_chat_app";
+
 container.resolve(function (users) {
   mongoose.Promise = global.Promise;
-  mongoose.connect("mongodb://localhost/udemy_chat_app", {
-    useMongoClient: true,
-  });
+  mongoose.connect(url, { useNewUrlParser: true });
   const app = SetupExpress();
   function SetupExpress() {
     const app = express();
@@ -34,19 +34,19 @@ container.resolve(function (users) {
   }
 
   function ConfigureExpress(app) {
+    require("./passport/passport-local");
     app.use(express.static("public"));
     app.use(cookieParser());
     app.set("view engine", "ejs");
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: true }));
 
-    app.use(validator());
     app.use(
       session({
         secret: "thisisasecretkey",
-        resave: true,
-        saveInitialized: true,
-        store: new MongoStore({ mongooseConnection: mongoose.connection }),
+        resave: false,
+        saveUninitialized: false,
+        store: MongoStore.create({ mongoUrl: url, touchAfter: 24 * 3600 }),
       })
     );
     app.use(flash());

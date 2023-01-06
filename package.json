@@ -4,7 +4,9 @@
   "description": "A chat application built with node, mongodb, express, and socket.io.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js",
+    "dev": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -17,7 +19,9 @@
   },
   "homepage": "https://github.com/RebeccaBeitel/udemy_chat_app#readme",
   "dependencies": {
+    "bcrypt-nodejs": "^0.0.3",
     "body-parser": "^1.20.1",
+    "bootstrap": "^5.3.0-alpha1",
     "connect-flash": "^0.1.1",
     "connect-mongo": "^4.6.0",
     "cookie-parser": "^1.4.6",
@@ -29,6 +33,7 @@
     "express-validator": "^6.14.2",
     "lodash": "^4.17.21",
     "mongoose": "^6.8.2",
+    "nodemon": "^2.0.20",
     "passport": "^0.6.0",
     "passport-local": "^1.0.0"
   }

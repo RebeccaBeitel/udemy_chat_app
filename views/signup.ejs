@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Udemy Chat App</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/css/login.css" />
+  </head>
+
+  <body>
+    <div class="container logo-container">
+      <div class="row">
+        <div class="col-md-12">
+          <nav class="navbar" id="nav_bar" role="navigation">
+            <div class="navbar-header">
+              <button
+                type="button"
+                class="navbar-toggle navbar_icon"
+                data-toggle="collapse"
+                data-target="#bs-example-navbar-collapse-1"
+              >
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <h1 class="logo-div">
+                <a href="/">Udemy Chat App</a>
+              </h1>
+            </div>
+
+            <div
+              class="collapse navbar-collapse"
+              id="bs-example-navbar-collapse-1"
+            >
+              <ul class="nav navbar-nav navbar-right">
+                <li style="padding-right: 50px">
+                  <h2 class="reg-div">
+                    <a href="/"> Login </a>
+                  </h2>
+                </li>
+
+                <li class="reg_link2">
+                  <h2 class="reg-div">
+                    <a href="/signup">Sign Up</a>
+                  </h2>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>
+
+    <div id="main">
+      <div class="main">
+        <form action="/signup" method="post">
+          <h1>Sign Up</h1>
+
+          <div class="inset">
+            <p>
+              <label for="username">USERNAME</label>
+              <input type="text" name="username" class="" placeholder="" />
+            </p>
+
+            <p>
+              <label for="email">EMAIL ADDRESS</label>
+              <input type="text" name="email" placeholder="" />
+            </p>
+            <p>
+              <label for="password">PASSWORD</label>
+              <input type="password" name="password" placeholder="" />
+            </p>
+          </div>
+
+          <p class="p-container">
+            <span><a href="/">Login</a></span>
+            <input
+              type="submit"
+              class="login-log"
+              style="background: #bc6c25; border: #283618"
+              value="Sign Up"
+            />
+          </p>
+        </form>
+      </div>
+    </div>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
+      integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

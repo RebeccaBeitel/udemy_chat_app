@@ -62,19 +62,8 @@ module.exports = function (_, passport, user, validator) {
     },
 
     indexPage: function (req, res) {
-      const errors = req.flash("error");
-      return res.render("index", {
-        title: "Udemy Chat App",
-        messages: errors,
-        hasErrors: errors.length > 0,
-      });
+      return res.render("index");
     },
-
-    postLogin: passport.authenticate("local.login", {
-      successRedirect: "/home",
-      failureRedirect: "/signup",
-      failureFlash: true,
-    }),
 
     getSignUp: function (req, res) {
       const errors = req.flash("error");
@@ -88,6 +77,7 @@ module.exports = function (_, passport, user, validator) {
     postValidation: function (req, res, next) {
       const err = validator.validationResult(req);
       const errors = err.array();
+      console.log(errors);
       const messages = [];
       errors.forEach((error) => {
         messages.push(error.msg);

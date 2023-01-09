@@ -11,6 +11,10 @@
       integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
       crossorigin="anonymous"
     />
+    <script
+      src="https://kit.fontawesome.com/76d2d2a2a3.js"
+      crossorigin="anonymous"
+    ></script>
     <link rel="stylesheet" href="/css/login.css" />
   </head>
 
@@ -56,6 +60,12 @@
     <div id="main">
       <div class="main">
         <form action="/signup" method="post">
+          <h1>
+            <a href="/auth/google" class="btn-social btn-gplus btn-lg">
+              <i class="fa fa-google"></i> Sign Up with Google
+            </a>
+          </h1>
+
           <h1>Sign Up</h1>
 
           <% if(hasErrors) {%> <% _.forEach(messages, function(error){ %>

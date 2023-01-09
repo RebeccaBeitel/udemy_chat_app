@@ -93,15 +93,8 @@ module.exports = function (_, passport, user, validator) {
         messages.push(error.msg);
       });
 
-      if (messages.length > 0) {
-        req.flash("error", messages);
-        if (req.url === "/signup") {
-          res.redirect("/signup");
-          return;
-        } else if (req.url === "/") {
-          res.redirect("/");
-        }
-      }
+      req.flash("error", messages);
+
       return next();
     },
 

@@ -35,6 +35,7 @@ container.resolve(function (users, _) {
 
   function ConfigureExpress(app) {
     require("./passport/passport-local");
+    require("./passport/passport-google");
     app.use(express.static("public"));
     app.use(cookieParser());
     app.set("view engine", "ejs");

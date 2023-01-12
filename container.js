@@ -7,6 +7,9 @@ const simpleDependencies = [
   ["_", "lodash"],
   ["passport", "passport"],
   ["validator", "express-validator"],
+  ["formidable", "formidable"],
+  ["Club", "./models/clubs"],
+  ["aws", "./helpers/aws-upload"],
 ];
 
 simpleDependencies.forEach(function (val) {

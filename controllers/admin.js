@@ -14,7 +14,7 @@ module.exports = function (formidable, Club, aws) {
 
     adminPostPage: function (req, res) {
       const newClub = new Club();
-      newClub.name = req.body.name;
+      newClub.name = req.body.club;
       newClub.country = req.body.country;
       newClub.image = req.body.upload;
       newClub.save((err) => {
@@ -24,7 +24,7 @@ module.exports = function (formidable, Club, aws) {
 
     uploadFile: function (req, res) {
       const form = new formidable.IncomingForm();
-      form.uploadDir = path.join(__dirname, "../public/uploads");
+      // form.uploadDir = path.join(__dirname, "../public/uploads");
       form.on("file", (field, file) => {
         // fs.rename(file.path, path.join(form.uploadDir, file.name), (err) => {
         //   if (err) {

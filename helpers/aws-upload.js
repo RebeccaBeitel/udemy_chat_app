@@ -2,13 +2,7 @@ const AWS = require("aws-sdk");
 const multer = require("multer");
 const multerS3 = require("multer-s3");
 
-const myConfig = new AWS.Config();
-
-myConfig.update({
-  accessKey: "AKIAUPQO6RQLEONHJOM2",
-  secretAccessKey: "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",
-  region: "us-west-1",
-});
+AWS.config.loadFromPath("./secret/aws-config.json");
 
 const S0 = new AWS.S3({});
 
@@ -24,7 +18,7 @@ const upload = multer({
       cb(null, file.originalname);
     },
     rename: function (fieldName, fileName) {
-      return fileName.replace(/\W+/g, "-");
+      return fileName.replace(/\W+/g, "-").toLowerCase();
     },
   }),
 });

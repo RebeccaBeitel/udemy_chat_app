@@ -10,7 +10,6 @@ const simpleDependencies = [
   ["formidable", "formidable"],
   ["Club", "./models/clubs"],
   ["aws", "./helpers/aws-upload"],
-  ["keys", "./secret/secret-file"],
 ];
 
 simpleDependencies.forEach(function (val) {

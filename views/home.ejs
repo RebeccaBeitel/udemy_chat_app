@@ -95,9 +95,11 @@
                         <hr />
                         <select class="" name="country" id="country">
                           <option value="">Filter By Country</option>
-                          <option>England</option>
-                          <option>Germany</option>
-                          <option>France</option>
+                          <% _.forEach(country, function(value) { %>
+                          <option value="<%= value._id %>">
+                            <%= value._id %>
+                          </option>
+                          <% }) %>
                         </select>
                         <div class="clearfix"></div>
                         <button class="btn add-apply">Apply</button>
@@ -111,18 +113,20 @@
 
           <div class="col-md-9">
             <div>
+              <% _.forEach(data, function(val) { %>
               <div class="category-list">
                 <div class="row">
+                  <% _.forEach(val, function(val2) { %>
                   <form action="#" method="post" id="add-fav">
                     <div class="item col-md-4">
                       <div class="thumbnail">
                         <img alt="" />
                         <div class="caption">
-                          <h4>Name</h4>
+                          <h4><%= val2.name %></h4>
 
                           <div class="row">
                             <div class="col-xs-12 col-md-6">
-                              <p>Country</p>
+                              <p><%= val2.country %></p>
                             </div>
 
                             <div class="col-xs-12 col-md-6">
@@ -135,8 +139,10 @@
                       </div>
                     </div>
                   </form>
+                  <% }) %>
                 </div>
               </div>
+              <% }) %>
             </div>
           </div>
         </div>

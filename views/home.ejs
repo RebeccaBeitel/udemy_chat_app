@@ -3,17 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <title>Udemy Chat App</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
-      crossorigin="anonymous"
-    />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-    <script
-      src="https://kit.fontawesome.com/76d2d2a2a3.js"
-      crossorigin="anonymous"
-    ></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css" />
   </head>
   <body>
@@ -93,7 +85,7 @@
                       <div class="content">
                         <p class="filter">FILTER</p>
                         <hr />
-                        <select class="" name="country" id="country">
+                        <select class="form-class" name="country" id="country">
                           <option value="">Filter By Country</option>
                           <% _.forEach(country, function(value) { %>
                           <option value="<%= value._id %>">
@@ -113,38 +105,46 @@
 
           <div class="col-md-9">
             <div>
-              <% _.forEach(data, function(val) { %>
-              <div class="category-list">
-                <div class="row">
-                  <% _.forEach(val, function(val2) { %>
-                  <form action="#" method="post" id="add-fav">
-                    <div class="item col-md-4">
-                      <div class="thumbnail">
-                        <img alt="" />
-                        <div class="caption">
-                          <h4><%= val2.name %></h4>
-
-                          <div class="row">
-                            <div class="col-xs-12 col-md-6">
-                              <p><%= val2.country %></p>
+               <% _.forEach(chunks, function(val) { %>
+                <div class="category-list">
+                    <div class="row">
+                       <% _.forEach(val, function(val2) { %>
+                        <form action="/home" method="post" id="favorite">
+                            <div class="item col-md-4">
+        <a style="text-decoration:none" href="/group/<%= val2.name.replace(/ /g, "-") %>">
+                                <div class="thumbnail">
+                                   <img src="https://thisnzlife.co.nz/wp-content/uploads/2019/05/iStock-492881830-1.jpg" alt="">
+                                    <div class="caption">
+                                        <h4>
+                                            <%= val2.name %> (<%= val2.fans.length %>)
+                                        </h4>
+                                        
+                                        <div class="row">
+                                            <div class="col-xs-12 col-md-6">
+                                                <p>
+                                                    <%= val2.country %>
+                                                </p>
+                                            </div>
+                                            
+                                            <div class="col-xs-12 col-md-6">
+                                                <input type="hidden" name="id" id="id" value="<%= val2._id %>">
+                                                <input type="hidden" name="clubName" id="club_Name" value="<%= val2.name %>">
+                                                <button class="btn add-fav">
+                                                    Add To Favorite
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </a>
                             </div>
-
-                            <div class="col-xs-12 col-md-6">
-                              <button class="btn add-fav">
-                                Add To Favorite
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                        </form>
+                        <% }) %>
                     </div>
-                  </form>
-                  <% }) %>
                 </div>
-              </div>
-              <% }) %>
+                <% }) %>
             </div>
-          </div>
+        </div>
         </div>
       </div>
     </div>

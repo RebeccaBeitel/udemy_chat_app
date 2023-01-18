@@ -14,7 +14,7 @@ const container = require("./container");
 
 const url = "mongodb://localhost/udemy_chat_app";
 
-container.resolve(function (users, _, admin, home) {
+container.resolve(function (users, _, admin, home, group) {
   mongoose.Promise = global.Promise;
   mongoose.connect(url, { useNewUrlParser: true });
   const app = SetupExpress();
@@ -31,6 +31,7 @@ container.resolve(function (users, _, admin, home) {
     users.SetRouting(router);
     admin.SetRouting(router);
     home.SetRouting(router);
+    group.SetRouting(router);
 
     app.use(router);
   }

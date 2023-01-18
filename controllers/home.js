@@ -41,7 +41,7 @@ module.exports = function (async, Club, _) {
 
           res.render("home", {
             title: "Udemy Chat App - Home",
-            data: dataChunk,
+            chunks: dataChunk,
             country: countrySort,
           });
         }

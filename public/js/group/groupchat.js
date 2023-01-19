@@ -1,20 +1,20 @@
 $(document).ready(function () {
-  let socket = io();
+  var socket = io();
 
-  let room = $("#groupName").val();
+  var room = $("#groupName").val();
 
   socket.on("connect", function () {
     console.log("Yay! User connected. ");
 
-    let params = {
+    var params = {
       room: room,
     };
     socket.emit("join", params, function () {
-      console.log("User has joined this channel.");
+      console.log(`User has joined ${params.room} channel.`);
     });
   });
 
-  socket.on("createMessage", function (data) {
+  socket.on("newMessage", function (data) {
     console.log(data.text);
     console.log(data.room);
   });
@@ -22,8 +22,8 @@ $(document).ready(function () {
   $("message-form").on("submit", function (e) {
     e.preventDefault();
 
-    let msg = $("#msg").val();
-
+    var msg = $("#msg").val();
+    console.log(msg);
     socket.emit(
       "createMessage",
       {

@@ -4,15 +4,17 @@ module.exports = function (io) {
 
     socket.on("join", (params, callback) => {
       socket.join(params.room);
+      console.log(`User connected to ${params.room} room.`);
       callback();
     });
 
-    socket.on("createMessage", (message) => {
-      console.log(message);
-      io.to(msg.room).emit("newMessage", {
-        text: msg.text,
-        room: msg.room,
+    socket.on("createMessage", (message, callback) => {
+      io.to(message.room).emit("newMessage", {
+        text: message.text,
+        room: message.room,
       });
+
+      callback();
     });
   });
 };

@@ -1,4 +1,4 @@
-module.exports = function () {
+module.exports = function (Users, async) {
   return {
     SetRouting: function (router) {
       router.get("/group/:name", this.groupPage);
@@ -7,7 +7,8 @@ module.exports = function () {
       const name = req.params.name;
       res.render("groupchat/group", {
         title: "Udemy Chat App - Group",
-        name: name,
+        user: req.user,
+        groupName: name,
       });
     },
   };

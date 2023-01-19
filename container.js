@@ -10,6 +10,7 @@ const simpleDependencies = [
   ["formidable", "formidable"],
   ["async", "async"],
   ["Club", "./models/clubs"],
+  ["Users", "./models/user"],
   ["aws", "./helpers/aws-upload"],
 ];
 

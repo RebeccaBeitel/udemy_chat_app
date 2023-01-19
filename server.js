@@ -9,6 +9,7 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const flash = require("connect-flash");
 const passport = require("passport");
+const socketIO = require("socket.io");
 
 const container = require("./container");
 
@@ -21,10 +22,13 @@ container.resolve(function (users, _, admin, home, group) {
   function SetupExpress() {
     const app = express();
     const server = http.createServer(app);
+    const io = socketIO(server);
     server.listen(3000, function () {
       console.log("Listening on port 3000");
     });
     ConfigureExpress(app);
+
+    require("./socket/groupchat")(io);
 
     // Set up router
     const router = require("express-promise-router")();
